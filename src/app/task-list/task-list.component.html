@@ -1,0 +1,19 @@
+<div class="container mx-auto mt-4">
+  <div class="flex flex-row items-center justify-between flex-wrap">
+    <button class="bg-gray-500 text-white transition-all border border-black rounded-md px-4 py-2 hover:font-bold"
+      (click)="toggleShowAddNewTask()">Añadir tarea nueva</button>
+    <div *ngIf="showAddNewTask" class="mt-2">
+      <form>
+        <input type="text" class="rounded-md mx-4 my-2 py-2 border border-black text-center" placeholder="Nombre de la tarea"
+        [(ngModel)]="taskInForm.name" name="taskName" required>
+        <input type="date" class="rounded-md mx-4 py-2 border my-2 border-black text-center" [(ngModel)]="taskInForm.date" name="taskDate" required>
+        <input type="text" class="rounded-md mx-4 py-2 border my-2 border-black text-center" placeholder="Descripción de la tarea" name="taskDescripcion"
+          [(ngModel)]="taskInForm.description" required>
+        <input type="submit" class="bg-green-600 text-white transition-all border border-black rounded-md px-4 py-2 hover:font-bold"
+          (click)="sendNewTask()" value="Enviar" [disabled]="taskInForm.name != '' && taskInForm.description != '' && taskInForm.date != '' ? false : true">
+      </form>
+    </div>
+  </div>
+
+  <app-task-item *ngFor="let item of tasksList" [task]="item" (taskDeleted)="getTasksList()"></app-task-item>
+</div>

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "daw2-todolist-fbe86"
+  },
+  "targets": {
+    "daw2-todolist-fbe86": {
+      "hosting": {
+        "TodoListDAW2": [
+          "daw2-todolist-fbe86"
+        ]
+      }
+    }
+  }
+}

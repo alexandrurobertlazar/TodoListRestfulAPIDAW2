@@ -1,0 +1,14 @@
+<div class="flex flex-row items-center justify-center py-48">
+  <form class="flex flex-col items-center justify-around ">
+    <label for="taskName">Nombre de la tarea:</label>
+    <input type="text" class="my-2 py-2 px-4 rounded-md border border-black" name="taskName" [(ngModel)]="task.name">
+    <label for="taskDescripcion">Descripción de la tarea:</label>
+    <input type="textarea" class="my-2 py-2 px-4 rounded-md border border-black" name="taskDescripcion" [(ngModel)]="task.description">
+    <label for="taskDate">Fecha de la tarea:</label>
+    <input type="date" class="my-2 py-2 px-4 rounded-md border border-black" name="taskDate" [(ngModel)]="task.date">
+    <label for="taskStatus">¿Tarea finalizada?</label>
+    <input type="checkbox" class="my-2 py-2 px-4 rounded-md border border-black" name="taskStatus" [(ngModel)]="task.status">
+    <button class="text-white bg-green-600 px-4 py-2 rounded-md border border-black transition-all hover:font-bold" (click)="updateTask()">Actualizar tarea</button>
+    <button class="text-white bg-gray-500 px-4 py-2 rounded-md border border-black transition-all hover:font-bold mt-2" (click)="goBack()">Volver atrás</button>
+  </form>
+</div>
