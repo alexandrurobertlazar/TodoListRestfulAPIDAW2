@@ -19,8 +19,9 @@ export class TaskItemComponent implements OnInit {
   }
 
   deleteTask(): void {
-    this.taskService.deleteData(this.task.id)
-    this.taskDeleted.emit();
+    this.taskService.deleteData(this.task.id).subscribe(data => {
+      this.taskDeleted.emit();
+    })
   }
 
   showTaskDetails() {

@@ -29,13 +29,15 @@ export class TaskListComponent implements OnInit {
   }
 
   async sendNewTask() {
-    this.taskService.addData(this.taskInForm);
-    await this.getTasksList();
+    this.taskService.addData(this.taskInForm).subscribe(async _ => {
+      await this.getTasksList();
+    });
   }
 
   async getTasksList() {
-    const resp = await this.taskService.getData();
-    this.tasksList = resp;
+    const resp = await this.taskService.getData().subscribe((data: any) => {
+      this.tasksList = data.tasks
+    });
   }
 
   emptyTaskForm() {

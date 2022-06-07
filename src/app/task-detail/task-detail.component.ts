@@ -17,14 +17,13 @@ export class TaskDetailComponent implements OnInit {
     this.activatedRoute.params.subscribe((param) => {
       taskId = param['id'];
     })
-    this.getTaskData(taskId).then((resp) => {
-      this.task = resp
-    });
+    this.getTaskData(taskId)
   }
 
-  async getTaskData(taskId: string) {
-    const resp = await this.taskService.getTaskById(taskId);
-    return resp;
+  getTaskData(taskId: string) {
+    this.taskService.getTaskById(taskId).subscribe((data: any) => {
+      this.task = data.task
+    });
   }
 
   goBack() {
@@ -32,7 +31,6 @@ export class TaskDetailComponent implements OnInit {
   }
 
   updateTask() {
-    this.taskService.updateData(this.task.id, this.task);
+    this.taskService.updateData(this.task.id, this.task).subscribe();
   }
-
 }
